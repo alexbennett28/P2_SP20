@@ -57,11 +57,21 @@ my_list = [1, 2, 5, 700, 300000]
 # Find and print the average of num_list (2pts)
 print(sum(num_list)/len(num_list))
 # Remove the lowest number from num_list (2pt)
-del my_list[0]
-print(my_list)
+num_list.sort()
+del num_list[0]
+
+print(num_list)
 # Create and print a new list called top_ten which contains only the 10 highest numbers in num_list(2pts)
 top_ten = []
-# print(num_list(secondmax))
+
+top_ten = num_list
+top_ten.sort()
+
+del top_ten[:- 10]
+print(top_ten)
+
+
+
 
 
 
