@@ -3,6 +3,7 @@ Complete the chapter lab at https://docs.google.com/document/d/1KjrNiE3mUbaeyTPp
 '''
 
 # Successful linear spellcheck (10pts)
+file = open()
 # Successful binary spellcheck (10pts)
 # Binary and linear are written as functions (5pts)
 
