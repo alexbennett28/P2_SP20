@@ -6,17 +6,30 @@ I pulled this data from the csv in the same folder and converted it into a list 
 For all answers, show your work
 Use combinations of sorting, list comprehensions, filtering or other techniques to get the answers.
 '''
+from NBAStats import data
+print(data[0])
 
 
 #1  Pop off the first item in the list and print it.  It contains the column headers. (1pt)
+print(data.pop(0))
 
 #2  Print the names of the top ten highest scoring single seasons in NBA history?
+data.sort(key=lambda x: x[-1])
+print(data[-9:])
+
 # You should use the PTS (points) column to sort the data. (4pts)
 
 #3  How many career points did Kobe Bryant have? Add up all of his seasons. (4pts)
+print(int(sum([x[-1] for x in data if x[3] == "Kobe Bryant"])))
+
+
+
+data.sort(key=lambda x: x[49])
+print(data)
+
 
 #4  What player has the most 3point field goals in a single season. (3pts)
-
+print(data[-11])
 #5  One stat featured in this data set is Win Shares(WS).
 #  WS attempts to divvy up credit for team success to the individuals on the team.
 #  WS/48 is also in this data.  It measures win shares per 48 minutes (WS per game).
