@@ -1,48 +1,69 @@
 import csv
 import matplotlib.pyplot as plt
 
+
 with open("../Libraries_-_2019_Visitors_by_Location (1).csv") as f:
     reader = csv.reader(f)  # makes a reader object
     data = list(reader)
-print(data)
+
+
+# plot the attendance data for our favorite library
 
 header = data.pop(0)
+#  print(data)
 print(header)
 
-# print(data[0])
-# month_names = [x[0] for x in data]
+print(data[0])
+names = [x[0] for x in data]
+print(names)
 
-# sulzer_index = names.index("Sulzer Regional Library")
-# print(sulzer_index)
-# month_numbers = [x for x in data(12)]
-# month_names = header[4:-1]
-# print(month_names)
+sulzer_index = names.index("Sulzer Regional Library")
+print(sulzer_index)
 
-# plt.figure(1, tight_layout=True) # tight_fit makes everything fit in figure
+sulzer_data = data[sulzer_index]
+print(sulzer_data)
 
-# plt.title("Sulzer Visitors By Month", color="blue")
-# plt.ylabel("Visitors")
-# plt.xticks(month_numbers, month_names, rotation=45)
-# plt.bar(month_numbers, sultzer_by_month)
-# plt.axes([-1, 13, 3, 15]) # xin, xmax, ymin, ymax
+sulzer_by_month = sulzer_data[4:-1]
+print(sulzer_by_month)
 
-# starting over with just headers and data
+sulzer_by_month = [int(x) for x in sulzer_by_month]
+print(sulzer_by_month)
 
-# plot top ten libraries for YTD totals
-plt.figure(2, tight_layout=True, figsize=(14, 6))  # fig size is how wide you want it in inches
+month_numbers = [x for x in range(12)]
+
+month_names = header[4:-1]
+print(month_names)
+
+plt.figure(1, tight_layout=True)  # tight_layout makes everything fit in figure
+
+# plt.plot(month_numbers, sulzer_by_month)
+plt.bar(month_numbers, sulzer_by_month)
+plt.xticks(month_numbers, month_names, rotation=75)
+
+plt.title("Sulzer Visitors by Month", fontsize=20, color='blue')
+plt.ylabel("Visitors")
+plt.axis([-1, 12, 0, 40000]) # [xmin, xmax, ymin, ymax]
+
+
+# Starting over with just header and data
+# plot top 10 libraries for YTD totals
+plt.figure(2, tight_layout=True, figsize=(14, 6))  # figsize in inches
+
 print(header)
-
 data.sort(key=lambda x: int(x[-1]))
-data(print)
+print(data)
 
 top_ten = data[-10:]
 top_ten_ytd = [int(x[-1]) for x in top_ten]
 
 top_ten_names = [x[0] for x in top_ten]
-
 x_vals = [x for x in range(len(top_ten))]
-plt.bar(x_vals, top_ten_ytd)  # barh is a horizontal bar graph
-plt.xticks(x_vals, top_ten_names, fontsize=10)
 
-plt.xlabel("Visitor YTD")
-plt.title("Top ten Most Visited Chicago Libraries")
+plt.barh(x_vals, top_ten_ytd)  # barh is a horizontal bar graph
+plt.yticks(x_vals, top_ten_names, fontsize=10)
+
+plt.xlabel("Visitors YTD")
+plt.title("Top Ten Most Visited Chicago Libraries")
+
+plt.show()
+
