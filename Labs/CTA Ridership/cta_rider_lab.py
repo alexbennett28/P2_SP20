@@ -1,8 +1,10 @@
+import matplotlib.pyplot as plt
+
 '''
 CTA Ridership (25pts)
 
-Get the csv from the following data set.
-https://data.cityofchicago.org/api/views/w8km-9pzd/rows.csv?accessType=DOWNLOAD
+Get the csv from the following data set.https://data.cityofchicago.org/api/views/w8km-9pzd/rows.csv?accessType=DOWNLOAD
+
 This shows CTA ridership by year going back to the 80s
 It has been updated with 2018 data, but not yet with 2019 unfortunately
 
@@ -14,3 +16,13 @@ It has been updated with 2018 data, but not yet with 2019 unfortunately
 5  Add a legend to show data represented by each of the three lines. (4pts)
 6  What trend or trends do you see in the data?  Offer a hypotheses which might explain the trend(s). Just add a comment here to explain. (2pts)
 '''
+
+import csv
+
+
+#with open('CTA_-_Ridership_-_Annual_Boarding_Totals (1).csv') as f:
+  #  reader = csv.reader(f)
+  #  data = list(reader)
+# print(len(data))
+plt.figure(1)
+plt.plot(1, 3, 5, 7)
