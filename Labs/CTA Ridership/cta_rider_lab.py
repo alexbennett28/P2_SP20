@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+import csv
 '''
 CTA Ridership (25pts)
 
@@ -17,12 +17,38 @@ It has been updated with 2018 data, but not yet with 2019 unfortunately
 6  What trend or trends do you see in the data?  Offer a hypotheses which might explain the trend(s). Just add a comment here to explain. (2pts)
 '''
 
-import csv
+with open('CTA_-_Ridership_-_Annual_Boarding_Totals (1).csv') as f:
+    reader = csv.reader(f)
+    data = list(reader)
 
 
-#with open('CTA_-_Ridership_-_Annual_Boarding_Totals (1).csv') as f:
-  #  reader = csv.reader(f)
-  #  data = list(reader)
-# print(len(data))
-plt.figure(1)
-plt.plot(1, 3, 5, 7)
+
+
+lten_years = [x[0] for x in data[-10:]]
+print(lten_years)
+last_ten_bus = [x[1] for x in data[-10:]]
+last_ten_train = [x[3] for x in data[-10:]]
+
+last_ten_total = [x[4] for x in data[-10:]]
+
+
+
+
+
+
+
+plt.figure(1, tight_layout=True)
+bus = plt.plot(lten_years, last_ten_bus, label="Bus Passengers")
+train = plt.plot(lten_years, last_ten_train, label="Train Passengers")
+total = plt.plot(lten_years, last_ten_total, label="Total Passengers")
+
+plt.xlabel("Years")
+plt.ylabel("Amount of People on Each Transit System")
+
+plt.title("CTA Ridership Per Year")
+
+plt.legend()
+plt.show()
+
+
+# Despite the rise of ride-share apps like Uber, the CTA has seen a revival of sorts. My thinking is that Uber has forced more people to have an increased appreciation for cheap ways to get back and forth. Also, you hear a lot about how broke millenials are, so it is quite possible that they use CTA more than the previous generation and have been boosint the CTA's numbers.

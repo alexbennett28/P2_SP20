@@ -66,5 +66,5 @@ plt.yticks(x_vals, top_ten_names, fontsize=10)
 plt.xlabel("Visitors YTD")
 plt.title("Top Ten Most Visited Chicago Libraries")
 
-plt.show()
+# plt.show()
 
